@@ -1,10 +1,5 @@
-const express = require('express');
+const { server, port, url } = require('./src/utils/config');
 
-const server = express();
-const port = 3001;
+server.get('/', (req, res) => res.send('My Kanban API'));
 
-server.get('/', (req, res) => res.send('Hello'));
-
-server.listen(port, () =>
-  console.log(`Server listening on : http://localhost:${port}`)
-);
+server.listen(port, () => console.log(`Server listening on : ${url}:${port}`));
