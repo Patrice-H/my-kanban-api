@@ -1,8 +1,6 @@
-const bodyParser = require('body-parser');
 let tasks = require('../db/data');
 
 const createTask = (app) => {
-  app.use(bodyParser.json());
   app.post('/api/tasks', (req, res) => {
     const newTask = { ...req.body };
     tasks.push(newTask);
