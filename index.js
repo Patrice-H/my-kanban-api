@@ -1,4 +1,5 @@
 const { server, port, url } = require('./src/utils/config');
+const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const readAlltasks = require('./src/routes/readAllTasks');
 const readTaskById = require('./src/routes/readTaskById');
@@ -6,7 +7,7 @@ const createTask = require('./src/routes/createTask');
 const updateTask = require('./src/routes/updateTask');
 const deleteTask = require('./src/routes/deleteTask');
 
-server.use(bodyParser.json());
+server.use(favicon(__dirname + '/favicon.ico')).use(bodyParser.json());
 
 server.get('/', (req, res) => res.send('My Kanban API'));
 readAlltasks(server);
