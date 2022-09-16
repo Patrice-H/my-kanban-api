@@ -15,6 +15,7 @@ server
   .use(bodyParser.json());
 
 sequelize.connectDb();
+sequelize.initDb();
 
 server.get('/', (req, res) => res.send('My Kanban API'));
 readAlltasks(server);
