@@ -1,11 +1,11 @@
-const tasks = require('../db/data');
+const { Task } = require('../db/sequelize');
 
 const readTaskById = (app) => {
   app.get('/api/task/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const task = tasks.find((task) => task.id === id);
-    const message = 'The task has been found';
-    res.json({ message, data: task });
+    Task.findByPk(req.params.id).then((task) => {
+      const message = 'The task has been found';
+      res.json({ message, data: task });
+    });
   });
 };
 
