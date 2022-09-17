@@ -1,14 +1,16 @@
-let tasks = require('../db/data');
+const { Task } = require('../db/sequelize');
 
 const updateTask = (app) => {
   app.put('/api/task/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const updatedTask = { ...req.body };
-    tasks = tasks.map((task) => {
-      return task.id === id ? updatedTask : task;
+    const id = req.params.id;
+    Task.update(req.body, {
+      where: { id: id },
+    }).then(() => {
+      Task.findByPk(id).then((updatedTask) => {
+        const message = 'The task has been updated';
+        res.json({ message, data: updatedTask });
+      });
     });
-    const message = 'The task has been updated';
-    res.json({ message, data: updatedTask });
   });
 };
 
