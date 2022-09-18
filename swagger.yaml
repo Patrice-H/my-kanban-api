@@ -1,0 +1,149 @@
+swagger: '2.0'
+info:
+  title: My Kanban API documentation
+  description: Contains all available API endpoints in this codebase
+  version: '1.0.0'
+  termsOfService: 'http://swagger.io/terms/'
+host: localhost:3001
+basePath: /api
+schemes:
+  - http
+paths:
+  /tasks:
+    get:
+      tags:
+        - Task Module
+      summary: Tasks List
+      description: API to retrieve all tasks
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The tasks list has been successfully retrieved
+          schema:
+            $ref: '#/definitions/TasksListResponse'
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - Task Module
+      summary: Create Task
+      description: API to add a task in the list
+      parameters:
+        - in: body
+          name: Task
+          required: true
+          schema:
+            $ref: '#/definitions/TaskDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The task has been added to the list
+          schema:
+            $ref: '#/definitions/Task'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /task:
+    get:
+      tags:
+        - Task Module
+      summary: Task Details
+      description: API to retrieve all details of a task
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The task has been found
+          schema:
+            $ref: '#/definitions/Task'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      tags:
+        - Task Module
+      summary: Update Task
+      description: API to update details of a task
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+        - in: body
+          name: Task
+          required: true
+          schema:
+            $ref: '#/definitions/TaskDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The task has been updated
+          schema:
+            $ref: '#/definitions/Task'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    delete:
+      tags:
+        - Task Module
+      summary: Delete Task
+      description: API to delete a task
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The task has been deleted
+          schema:
+            $ref: '#/definitions/Task'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+definitions:
+  Task:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: auto-increment
+      name:
+        type: string
+      category:
+        type: string
+        enum: [to do, in progress, done]
+      order:
+        type: integer
+      created:
+        type: string
+        description: created date and time
+  TasksListResponse:
+    type: array
+    items:
+      $ref: '#/definitions/Task'
+    minItems: 3
+  TaskDetail:
+    type: object
+    properties:
+      name:
+        type: string
+      category:
+        type: string
+        enum: [to do, in progress, done]
+      order:
+        type: integer 
