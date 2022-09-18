@@ -1,4 +1,5 @@
 const { server, port, url } = require('./src/utils/config');
+const cors = require('cors');
 const favicon = require('serve-favicon');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -11,6 +12,8 @@ const deleteTask = require('./src/routes/deleteTask');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('yamljs');
 const swaggerDocs = yaml.load('./swagger.yaml');
+
+server.use(cors());
 
 server
   .use(favicon(__dirname + '/favicon.ico'))
