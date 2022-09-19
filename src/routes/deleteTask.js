@@ -7,7 +7,7 @@ const deleteTask = (app) => {
       Task.destroy({
         where: { id: task.id },
       }).then(() => {
-        const message = 'The task has been deleted';
+        const message = 'La tâche a bien été supprimée';
         res.json({ message, data: deletedTask });
       });
     });

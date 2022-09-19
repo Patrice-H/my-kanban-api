@@ -7,7 +7,7 @@ const updateTask = (app) => {
       where: { id: id },
     }).then(() => {
       Task.findByPk(id).then((updatedTask) => {
-        const message = 'The task has been updated';
+        const message = 'La tâche a bien été mise à jour';
         res.json({ message, data: updatedTask });
       });
     });
