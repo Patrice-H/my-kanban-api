@@ -1,25 +1,25 @@
 const tasks = [
   {
     id: 1,
-    name: 'Faire les courses',
+    title: 'Faire les courses',
     category: 'to do',
     order: 1,
   },
   {
     id: 2,
-    name: 'Préparer le repas',
+    title: 'Préparer le repas',
     category: 'to do',
     order: 2,
   },
   {
     id: 3,
-    name: 'Manger',
+    title: 'Manger',
     category: 'to do',
     order: 3,
   },
   {
     id: 4,
-    name: 'Faire la vaisselle',
+    title: 'Faire la vaisselle',
     category: 'to do',
     order: 4,
   },
