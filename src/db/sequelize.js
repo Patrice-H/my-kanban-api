@@ -1,6 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const TaskModel = require('../models/task');
+const CategoryModel = require('../models/category');
 let tasks = require('./data');
+let categories = require('./dataCategories');
 
 const sequelize = new Sequelize('my-kanban', 'root', '', {
   host: 'localhost',
@@ -28,12 +30,16 @@ const connectDb = async () => {
 };
 
 const Task = TaskModel(sequelize, DataTypes);
+const Category = CategoryModel(sequelize, DataTypes);
 
 const initDb = async () => {
   return sequelize.sync({ force: true }).then(() => {
     Task.bulkCreate(tasks).then(() =>
-      console.log('The database was successfully synchronized')
+      console.log('The tasks was successfully synchronized')
     );
+    Category.bulkCreate(categories).then(() => {
+      console.log('The categories was successfully synchronized');
+    });
   });
 };
 
