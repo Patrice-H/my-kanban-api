@@ -43,4 +43,4 @@ const initDb = async () => {
   });
 };
 
-module.exports = { connectDb, initDb, Task };
+module.exports = { connectDb, initDb, Task, Category };
