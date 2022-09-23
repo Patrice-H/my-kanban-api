@@ -11,11 +11,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      category: {
-        type: DataTypes.STRING,
+      order: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
-      order: {
+      category_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      dashboard_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
