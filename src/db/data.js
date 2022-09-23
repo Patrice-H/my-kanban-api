@@ -2,26 +2,30 @@ const tasks = [
   {
     id: 1,
     title: 'Faire les courses',
-    category: 'A faire',
     order: 1,
+    category_id: 1,
+    dashboard_id: 1,
   },
   {
     id: 2,
     title: 'Préparer le repas',
-    category: 'A faire',
     order: 2,
+    category_id: 1,
+    dashboard_id: 1,
   },
   {
     id: 3,
     title: 'Manger',
-    category: 'A faire',
     order: 3,
+    category_id: 1,
+    dashboard_id: 1,
   },
   {
     id: 4,
     title: 'Faire la vaisselle',
-    category: 'A faire',
     order: 4,
+    category_id: 1,
+    dashboard_id: 1,
   },
 ];
 
