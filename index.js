@@ -14,6 +14,11 @@ const readCategoryById = require('./src/routes/readCategoryById');
 const createCategory = require('./src/routes/createCategory');
 const updateCategory = require('./src/routes/updateCategory');
 const deleteCategory = require('./src/routes/deleteCategory');
+const readAllDashboards = require('./src/routes/readAllDashboards');
+const readDashboardById = require('./src/routes/readDashboardById');
+const createDashboard = require('./src/routes/createDashboard');
+const updateDashboard = require('./src/routes/updateDashboard');
+const deleteDashboard = require('./src/routes/deleteDashboard');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('yamljs');
 const swaggerDocs = yaml.load('./swagger.yaml');
@@ -39,6 +44,11 @@ readCategoryById(server);
 createCategory(server);
 updateCategory(server);
 deleteCategory(server);
+readAllDashboards(server);
+readDashboardById(server);
+createDashboard(server);
+updateDashboard(server);
+deleteDashboard(server);
 
 server.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
