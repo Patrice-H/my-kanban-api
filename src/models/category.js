@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      background_color: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       dashboard_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
