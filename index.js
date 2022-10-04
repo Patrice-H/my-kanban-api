@@ -50,6 +50,17 @@ createDashboard(server);
 updateDashboard(server);
 deleteDashboard(server);
 
+server.use((req, res) => {
+  const urlError =
+    'Impossible de trouver la ressource demandée ! Veuillez essayer avec une autre URL';
+  const dbError = `Impossible d'accéder à la base de données ! Veuillez réessayer ultérieurement`;
+  if (req.url === '/tasks') {
+    res.status(404).json({ message: dbError });
+  } else {
+    res.status(404).json({ message: urlError });
+  }
+});
+
 server.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 server.listen(port, () => console.log(`Server listening on : ${url}:${port}`));
