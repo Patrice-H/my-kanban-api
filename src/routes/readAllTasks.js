@@ -4,7 +4,7 @@ const readAlltasks = (app) => {
   app.get('/api/tasks', (req, res) => {
     Task.findAll()
       .then((tasks) => {
-        const message = 'The tasks list has been successfully retrieved';
+        const message = 'La liste des tâches a bien été récupérée';
         res.json({ message, data: tasks });
       })
       .catch((error) => {
