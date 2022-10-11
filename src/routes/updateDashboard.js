@@ -7,6 +7,12 @@ const updateDashboard = (app) => {
       where: { id: id },
     }).then(() => {
       Dashboard.findByPk(id).then((updatedDashboard) => {
+        if (updatedDashboard === null) {
+          const message =
+            "Le tableau de bord demandé n'existe pas. Réessayez avec un autre identifiant";
+
+          return res.status(404).json({ message });
+        }
         const message = 'Le tableau de bord a bien été mis à jour';
         res.json({ message, data: updatedDashboard });
       });
