@@ -5,18 +5,24 @@ const updateDashboard = (app) => {
     const id = req.params.id;
     Dashboard.update(req.body, {
       where: { id: id },
-    }).then(() => {
-      Dashboard.findByPk(id).then((updatedDashboard) => {
-        if (updatedDashboard === null) {
-          const message =
-            "Le tableau de bord demandé n'existe pas. Réessayez avec un autre identifiant";
+    })
+      .then(() => {
+        return Dashboard.findByPk(id).then((updatedDashboard) => {
+          if (updatedDashboard === null) {
+            const message =
+              "Le tableau de bord demandé n'existe pas. Réessayez avec un autre identifiant";
 
-          return res.status(404).json({ message });
-        }
-        const message = 'Le tableau de bord a bien été mis à jour';
-        res.json({ message, data: updatedDashboard });
+            return res.status(404).json({ message });
+          }
+          const message = 'Le tableau de bord a bien été mis à jour';
+          res.json({ message, data: updatedDashboard });
+        });
+      })
+      .catch((error) => {
+        const message =
+          "Le tableau de bord n'a pas pu être mis à jour. Veuillez réessayer ultérieurement";
+        res.status(500).json({ message, data: error });
       });
-    });
   });
 };
 
