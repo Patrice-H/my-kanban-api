@@ -4,6 +4,12 @@ const deleteDashboard = (app) => {
   app.delete('/api/dashboard/:id', (req, res) => {
     Dashboard.findByPk(req.params.id).then((dashboard) => {
       const deletedDashboard = dashboard;
+      if (dashboard === null) {
+        const message =
+          "Le tableau de bord demandé n'existe pas. Réessayez avec un autre identifiant";
+
+        return res.status(404).json({ message });
+      }
       Dashboard.destroy({
         where: { id: dashboard.id },
       }).then(() => {
