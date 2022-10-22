@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const TaskModel = require('../models/task');
 const CategoryModel = require('../models/category');
 const DashboardModel = require('../models/dashboard');
-let tasks = require('./data');
+let tasks = require('./dataTasks');
 let categories = require('./dataCategories');
 let dashboards = require('./dataDashboards');
 
