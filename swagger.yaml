@@ -122,12 +122,15 @@ definitions:
       id:
         type: integer
         description: auto-increment
-      name:
+      title:
         type: string
-      category:
+      description:
         type: string
-        enum: [to do, in progress, done]
       order:
+        type: integer
+      category_id:
+        type: integer
+      dashboard_id:
         type: integer
       created:
         type: string
@@ -140,10 +143,13 @@ definitions:
   TaskDetail:
     type: object
     properties:
-      name:
+      title:
         type: string
-      category:
+      description:
         type: string
-        enum: [to do, in progress, done]
       order:
-        type: integer 
+        type: integer
+      category_id:
+        type: integer
+      dashboard_id:
+        type: integer
