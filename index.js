@@ -33,7 +33,9 @@ server
 sequelize.connectDb();
 sequelize.initDb();
 
-server.get('/', (req, res) => res.send('My Kanban API'));
+server.get('/', (req, res) =>
+  res.send('My Kanban API v1.0.0<br /><a href="./api">link to documentation<a>')
+);
 readAlltasks(server);
 readTaskById(server);
 createTask(server);
