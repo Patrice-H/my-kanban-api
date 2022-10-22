@@ -50,6 +50,8 @@ createDashboard(server);
 updateDashboard(server);
 deleteDashboard(server);
 
+server.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 server.use((req, res) => {
   const urlError =
     'Impossible de trouver la ressource demandée ! Veuillez essayer avec une autre URL';
@@ -60,7 +62,5 @@ server.use((req, res) => {
     res.status(404).json({ message: urlError });
   }
 });
-
-server.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 server.listen(port, () => console.log(`Server listening on : ${url}:${port}`));
