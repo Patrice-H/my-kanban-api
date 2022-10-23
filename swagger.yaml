@@ -115,6 +115,112 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /dashboards:
+    get:
+      tags:
+        - Dashboard Module
+      summary: Dashboards List
+      description: API to retrieve all dashboards
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The dashboards list has been successfully retrieved
+          schema:
+            $ref: '#/definitions/DashboardsListResponse'
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - Dashboard Module
+      summary: Create Dashboard
+      description: API to add a dashboard in the list
+      parameters:
+        - in: body
+          name: Dashboard
+          required: true
+          schema:
+            $ref: '#/definitions/DashboardDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The dashboard has been added to the list
+          schema:
+            $ref: '#/definitions/Dashboard'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /dashboard:
+    get:
+      tags:
+        - Dashboard Module
+      summary: Dashboard Details
+      description: API to retrieve all details of a dashboard
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The dashboard has been found
+          schema:
+            $ref: '#/definitions/Dashboard'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      tags:
+        - Dashboard Module
+      summary: Update Dashboard
+      description: API to update details of a dashboard
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+        - in: body
+          name: Dashboard
+          required: true
+          schema:
+            $ref: '#/definitions/DashboardDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The dashboard has been updated
+          schema:
+            $ref: '#/definitions/Dashboard'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    delete:
+      tags:
+        - Dashboard Module
+      summary: Delete Dashboard
+      description: API to delete a dashboard
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The dashboard has been deleted
+          schema:
+            $ref: '#/definitions/Dashboard'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
 definitions:
   Task:
     type: object
@@ -153,3 +259,24 @@ definitions:
         type: integer
       dashboard_id:
         type: integer
+  Dashboard:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: auto-increment
+      title:
+        type: string
+      created:
+        type: string
+        description: created date and time
+  DashboardsListResponse:
+    type: array
+    items:
+      $ref: '#/definitions/Dashboard'
+    minItems: 3
+  DashboardDetail:
+    type: object
+    properties:
+      title:
+        type: string
