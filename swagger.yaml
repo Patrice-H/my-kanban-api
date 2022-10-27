@@ -221,6 +221,112 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /categories:
+    get:
+      tags:
+        - Category Module
+      summary: Categories List
+      description: API to retrieve all categories
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The categories list has been successfully retrieved
+          schema:
+            $ref: '#/definitions/CategoriesListResponse'
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - Category Module
+      summary: Create Category
+      description: API to add a category in the list
+      parameters:
+        - in: body
+          name: Category
+          required: true
+          schema:
+            $ref: '#/definitions/CategoryDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The category has been added to the list
+          schema:
+            $ref: '#/definitions/Category'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /category:
+    get:
+      tags:
+        - Category Module
+      summary: Category Details
+      description: API to retrieve all details of a category
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The category has been found
+          schema:
+            $ref: '#/definitions/Category'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      tags:
+        - Category Module
+      summary: Update Category
+      description: API to update details of a category
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+        - in: body
+          name: Category
+          required: true
+          schema:
+            $ref: '#/definitions/categoryDetail'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The category has been updated
+          schema:
+            $ref: '#/definitions/Category'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    delete:
+      tags:
+        - Category Module
+      summary: Delete Category
+      description: API to delete a category
+      parameters:
+        - in: header
+          name: id
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: The category has been deleted
+          schema:
+            $ref: '#/definitions/Category'
+        '404':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
 definitions:
   Task:
     type: object
@@ -276,6 +382,30 @@ definitions:
       $ref: '#/definitions/Dashboard'
     minItems: 3
   DashboardDetail:
+    type: object
+    properties:
+      title:
+        type: string
+  Category:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: auto-increment
+      title:
+        type: string
+      order:
+        type: integer
+      background_color:
+        type: string
+      dashboard_id:
+        type: integer
+  CategoriesListResponse:
+    type: array
+    items:
+      $ref: '#/definitions/Category'
+    minItems: 3
+  CategoryDetail:
     type: object
     properties:
       title:
