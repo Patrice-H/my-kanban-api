@@ -1,3 +1,7 @@
+/**
+ * @description A module that define a dashboard
+ * @module dashboard
+ */
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
     'Dashboard',

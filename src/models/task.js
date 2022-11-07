@@ -1,3 +1,7 @@
+/**
+ * @description A module that define a task
+ * @module task
+ */
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
     'Task',

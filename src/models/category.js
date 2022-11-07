@@ -1,3 +1,7 @@
+/**
+ * @description A module that define a category
+ * @module category
+ */
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
     'Category',
