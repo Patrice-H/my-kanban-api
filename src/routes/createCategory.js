@@ -1,5 +1,11 @@
 const { Category } = require('../db/sequelize');
 
+/**
+ * Function to create a category
+ *
+ * @description It creates a new category in the database and returns a message and the new category.
+ * @param {object} app - the express app
+ */
 const createCategory = (app) => {
   app.post('/api/categories', (req, res) => {
     Category.create(req.body)
