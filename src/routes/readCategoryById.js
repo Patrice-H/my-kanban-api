@@ -1,5 +1,11 @@
 const { Category } = require('../db/sequelize');
 
+/**
+ * Function to get a category
+ *
+ * @description It returns a category by its id from the database and a message.
+ * @param {object} app - the express app
+ */
 const readCategoryById = (app) => {
   app.get('/api/category/:id', (req, res) => {
     Category.findByPk(req.params.id)
