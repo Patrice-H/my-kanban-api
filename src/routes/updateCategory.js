@@ -1,5 +1,11 @@
 const { Category } = require('../db/sequelize');
 
+/**
+ * Function to update a category
+ *
+ * @description It updates a category in the database and returns a message and the updated category.
+ * @param {object} app - the express app
+ */
 const updateCategory = (app) => {
   app.put('/api/category/:id', (req, res) => {
     const id = req.params.id;
