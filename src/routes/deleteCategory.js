@@ -1,5 +1,11 @@
 const { Category } = require('../db/sequelize');
 
+/**
+ * Function to delete a category
+ *
+ * @description It deletes a category from the database and returns a message and the deleted category.
+ * @param {object} app - the express app
+ */
 const deleteCategory = (app) => {
   app.delete('/api/category/:id', (req, res) => {
     Category.findByPk(req.params.id)
