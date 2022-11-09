@@ -1,5 +1,11 @@
 const { Dashboard } = require('../db/sequelize');
 
+/**
+ * Function to get a dashboard
+ *
+ * @description It returns a dashboard by its id from the database and a message.
+ * @param {object} app - the express app
+ */
 const readDashboardById = (app) => {
   app.get('/api/dashboard/:id', (req, res) => {
     Dashboard.findByPk(req.params.id)
