@@ -1,5 +1,11 @@
 const { Dashboard } = require('../db/sequelize');
 
+/**
+ * Function to update a dashboard
+ *
+ * @description It updates a dashboard in the database and returns a message and the updated dashboard.
+ * @param {object} app - the express app
+ */
 const updateDashboard = (app) => {
   app.put('/api/dashboard/:id', (req, res) => {
     const id = req.params.id;
