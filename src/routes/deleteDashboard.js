@@ -1,5 +1,11 @@
 const { Dashboard } = require('../db/sequelize');
 
+/**
+ * Function to delete a dashboard
+ *
+ * @description It deletes a dashboard from the database and returns a message and the deleted dashboard.
+ * @param {object} app - the express app
+ */
 const deleteDashboard = (app) => {
   app.delete('/api/dashboard/:id', (req, res) => {
     Dashboard.findByPk(req.params.id)
