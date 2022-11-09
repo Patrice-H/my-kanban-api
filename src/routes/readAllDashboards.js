@@ -1,5 +1,11 @@
 const { Dashboard } = require('../db/sequelize');
 
+/**
+ * Function to get the dashboards list
+ *
+ * @description It gets all the dashboards from the database and returns them with a message.
+ * @param {object} app - the express app
+ */
 const readAllDashboards = (app) => {
   app.get('/api/dashboards', (req, res) => {
     Dashboard.findAll()
