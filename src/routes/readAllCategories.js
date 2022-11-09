@@ -1,5 +1,11 @@
 const { Category } = require('../db/sequelize');
 
+/**
+ * Function to get the categories list
+ *
+ * @description It gets all the categories from the database and returns them with a message.
+ * @param {object} app - the express app
+ */
 const readAllCategories = (app) => {
   app.get('/api/categories', (req, res) => {
     Category.findAll()
