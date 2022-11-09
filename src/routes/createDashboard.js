@@ -1,5 +1,11 @@
 const { Dashboard } = require('../db/sequelize');
 
+/**
+ * Function to create a dashboard
+ *
+ * @description It creates a new dashboard in the database and returns a message and the new dashboard.
+ * @param {object} app - the express app
+ */
 const createDashboard = (app) => {
   app.post('/api/dashboards', (req, res) => {
     Dashboard.create(req.body)
