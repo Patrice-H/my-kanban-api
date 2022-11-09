@@ -1,5 +1,11 @@
 const { Task } = require('../db/sequelize');
 
+/**
+ * Function to get the tasks list
+ *
+ * @description It gets all the tasks from the database and returns them with a message.
+ * @param {object} app - the express app
+ */
 const readAlltasks = (app) => {
   app.get('/api/tasks', (req, res) => {
     Task.findAll()
