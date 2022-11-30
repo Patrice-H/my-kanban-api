@@ -1,5 +1,11 @@
 const { Task } = require('../db/sequelize');
 
+/**
+ * Function to get a task
+ *
+ * @description It returns a task by its id from the database and a message.
+ * @param {object} app - the express app
+ */
 const readTaskById = (app) => {
   app.get('/api/task/:id', (req, res) => {
     Task.findByPk(req.params.id)
