@@ -1,5 +1,11 @@
 const { Task } = require('../db/sequelize');
 
+/**
+ * Function to create a task
+ *
+ * @description It creates a new task in the database and returns a message and the new task.
+ * @param {object} app - the express app
+ */
 const createTask = (app) => {
   app.post('/api/tasks', (req, res) => {
     Task.create(req.body)
