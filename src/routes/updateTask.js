@@ -1,5 +1,11 @@
 const { Task } = require('../db/sequelize');
 
+/**
+ * Function to update a task
+ *
+ * @description It updates a task in the database and returns a message and the updated task.
+ * @param {object} app - the express app
+ */
 const updateTask = (app) => {
   app.put('/api/task/:id', (req, res) => {
     const id = req.params.id;
