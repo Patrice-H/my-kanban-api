@@ -1,5 +1,11 @@
 const { Task } = require('../db/sequelize');
 
+/**
+ * Function to delete a task
+ *
+ * @description It deletes a task from the database and returns a message and the deleted task.
+ * @param {object} app - the express app
+ */
 const deleteTask = (app) => {
   app.delete('/api/task/:id', (req, res) => {
     Task.findByPk(req.params.id)
