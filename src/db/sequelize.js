@@ -18,6 +18,12 @@ const sequelize = new Sequelize('my-kanban', 'root', '', {
   logging: false,
 });
 
+/**
+ * Function to connect to the database
+ *
+ * @description It connects to the database and returns a promise.
+ * @returns The connection to the database has been successfully established
+ */
 const connectDb = async () => {
   return sequelize
     .authenticate()
@@ -35,6 +41,12 @@ const Dashboard = DashboardModel(sequelize, DataTypes);
 const Category = CategoryModel(sequelize, DataTypes);
 const Task = TaskModel(sequelize, DataTypes);
 
+/**
+ * Function to init database
+ *
+ * @description It creates a new database, then creates the tables, then inserts the data into the tables.
+ * @returns The return value is a promise.
+ */
 const initDb = async () => {
   return sequelize.sync({ force: true }).then(() => {
     Dashboard.bulkCreate(dashboards).then(() => {
