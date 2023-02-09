@@ -9,7 +9,7 @@
 
 To install the API locally on your machine, you must :
 
-1. Clone it on your computer `git clone https://github.com/Patrice-H/my-kamban-api.git`
+1. Clone it on your computer `git clone https://github.com/Patrice-H/my-kanban-api.git`
 2. Install `node_modules` with `npm install`
 3. Run the API with `npm start`
 
