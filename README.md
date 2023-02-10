@@ -3,7 +3,7 @@
 - This repo contains the API code you will need to run the My Kanban app.
   It goes hand in hand with [the repository of the frontend part](https://github.com/Patrice-H/MyKanban.git).
 
-- This API works with MariaDB [XAMPP Apache + MariaDB + PHP + Perl](https://www.apachefriends.org/fr/index.html)
+- This API works with MariaDB [XAMPP Apache + MariaDB](https://www.apachefriends.org/fr/index.html)
 
 ## Install the API locally
 
